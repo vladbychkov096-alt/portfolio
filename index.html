@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Владимир Бычков — Интернет-маркетинг</title>
+<style>
+@font-face {
+  font-family: 'TildaSans';
+  src: url('https://static.tildacdn.com/tildafont/TildaSans-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TildaSans';
+  src: url('https://static.tildacdn.com/tildafont/TildaSans-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TildaSans';
+  src: url('https://static.tildacdn.com/tildafont/TildaSans-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TildaSans';
+  src: url('https://static.tildacdn.com/tildafont/TildaSans-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+:root {
+  --bg: #f5f3ef;
+  --bg-alt: #eceae4;
+  --surface: #ffffff;
+  --ink: #1a1916;
+  --ink-light: #5a5850;
+  --ink-lighter: #9a9890;
+  --accent: #c8421a;
+  --accent-light: #e8c4b4;
+  --border: #d8d5ce;
+  --font: 'TildaSans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --max-w: 1100px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(245,243,239,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between; height: 60px;
+}
+.nav-logo {
+  font-weight: 700; font-size: 1rem; color: var(--ink);
+  text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-light); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  padding: 4px; background: none; border: none;
+}
+.nav-burger span { display: block; width: 22px; height: 2px; background: var(--ink); transition: all 0.25s; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none; flex-direction: column; background: var(--bg);
+  border-top: 1px solid var(--border); padding: 16px 24px 20px; gap: 16px;
+}
+.nav-mobile a {
+  font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-light); text-decoration: none;
+}
+.nav-mobile.open { display: flex; }
+
+/* ── SECTION BASE ── */
+section { padding: 96px 0; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.section-label {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--accent); margin-bottom: 12px;
+  font-family: var(--font-mono);
+}
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 48px;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--surface); padding-top: calc(60px + 64px); }
+.about-grid {
+  display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start;
+}
+.about-photo-wrap { position: relative; }
+.about-photo-real {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top;
+  display: block; border: 1px solid var(--border);
+}
+.about-content h3 {
+  font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: 20px; color: var(--ink); line-height: 1.25;
+}
+.about-text { font-size: 0.97rem; color: var(--ink-light); line-height: 1.75; margin-bottom: 16px; }
+
+/* About action links */
+.about-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.about-link {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 20px; border: 1px solid var(--border);
+  background: var(--bg); text-decoration: none;
+  color: var(--ink); font-size: 0.82rem; font-weight: 600;
+  transition: background 0.2s, border-color 0.2s;
+}
+.about-link:hover { background: var(--bg-alt); border-color: var(--ink-light); }
+.about-link.accent { background: var(--accent); border-color: var(--accent); color: #fff; }
+.about-link.accent:hover { background: #a8341a; border-color: #a8341a; }
+.about-link svg { flex-shrink: 0; }
+
+/* ── CASES ── */
+#cases { background: var(--bg); }
+.cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; background: var(--border); }
+.case-card {
+  background: var(--surface); text-decoration: none; display: block;
+  position: relative; overflow: hidden; transition: background 0.2s;
+}
+.case-card:hover { background: var(--bg-alt); }
+.case-img-placeholder {
+  width: 100%; aspect-ratio: 16/9; background: var(--bg-alt);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  border-bottom: 1px solid var(--border); position: relative; overflow: hidden; transition: background 0.2s;
+}
+.case-card:hover .case-img-placeholder { background: var(--accent-light); }
+.case-img-placeholder .img-ratio { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 500; color: var(--ink-lighter); }
+.case-img-placeholder .img-size { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-lighter); }
+.case-arrow { position: absolute; top: 12px; right: 14px; font-size: 1.4rem; color: var(--border); transition: color 0.2s, transform 0.2s; }
+.case-card:hover .case-arrow { color: var(--accent); transform: translate(2px,-2px); }
+.case-body { padding: 24px 28px 28px; }
+.case-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+.case-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 10px; letter-spacing: -0.01em; }
+.case-meta { font-size: 0.78rem; color: var(--ink-lighter); display: flex; gap: 12px; flex-wrap: wrap; }
+.case-meta span::before { content: '·'; margin-right: 12px; color: var(--border); }
+.case-meta span:first-child::before { display: none; }
+
+/* ── PROCESS ── */
+#process { background: var(--surface); }
+.process-cases { display: flex; flex-direction: column; border: 1px solid var(--border); }
+.process-case { border-bottom: 1px solid var(--border); }
+.process-case:last-child { border-bottom: none; }
+
+.process-case-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 28px 32px; cursor: pointer; transition: background 0.15s; gap: 16px;
+}
+.process-case-header:hover { background: var(--bg-alt); }
+.process-case-header-left { display: flex; align-items: flex-start; gap: 20px; flex: 1; min-width: 0; }
+.process-num {
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.1em; padding-top: 3px; white-space: nowrap;
+}
+.process-case-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; line-height: 1.3; }
+.process-toggle {
+  width: 28px; height: 28px; border: 1px solid var(--border); background: none;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s; flex-shrink: 0;
+  font-size: 1.1rem; color: var(--ink-light);
+}
+.process-toggle:hover { background: var(--bg-alt); border-color: var(--accent); color: var(--accent); }
+.process-toggle.open { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.process-body { display: none; padding: 0 32px 36px 80px; animation: slideDown 0.2s ease; }
+.process-body.open { display: block; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+.process-meta {
+  display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border);
+}
+.process-meta-item { font-size: 0.8rem; color: var(--ink-lighter); }
+.process-meta-item strong {
+  display: block; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--ink-light); font-weight: 600; margin-bottom: 2px;
+}
+.process-section-title {
+  font-weight: 700; font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--accent); margin: 24px 0 12px;
+}
+.process-text { font-size: 0.93rem; color: var(--ink-light); line-height: 1.7; margin-bottom: 8px; }
+
+/* Numbered top-level list */
+.process-ol { list-style: none; margin: 8px 0 4px; counter-reset: proc-counter; }
+.process-ol > li {
+  counter-increment: proc-counter;
+  font-size: 0.93rem; color: var(--ink); font-weight: 600;
+  padding: 10px 0 4px 32px; position: relative; line-height: 1.5;
+  border-top: 1px solid var(--bg-alt);
+}
+.process-ol > li:first-child { border-top: none; }
+.process-ol > li::before {
+  content: counter(proc-counter) '.';
+  position: absolute; left: 0; top: 10px;
+  color: var(--accent); font-size: 0.85rem; font-weight: 700;
+  font-family: var(--font-mono);
+}
+/* Bullet sub-list inside numbered items */
+.process-ul { list-style: none; margin: 6px 0 8px; }
+.process-ul li {
+  font-size: 0.9rem; color: var(--ink-light); font-weight: 400;
+  padding: 3px 0 3px 18px; position: relative; line-height: 1.55;
+}
+.process-ul li::before {
+  content: '–'; position: absolute; left: 0;
+  color: var(--ink-lighter); font-weight: 500;
+}
+/* Plain text inside numbered item (no sub-list) */
+.process-ol > li > p {
+  font-size: 0.9rem; color: var(--ink-light); font-weight: 400;
+  margin: 4px 0 6px; line-height: 1.6;
+}
+
+/* Results block */
+.process-results { background: var(--bg); border: 1px solid var(--border); padding: 20px 24px; margin-top: 24px; }
+.process-results-title { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
+.process-results-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.process-results-list li { font-size: 0.9rem; color: var(--ink); font-weight: 500; padding-left: 20px; position: relative; }
+.process-results-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-size: 0.78rem; top: 1px; }
+
+/* Conclusion block */
+.process-conclusion {
+  margin-top: 24px; padding: 20px 24px;
+  border-left: 3px solid var(--accent);
+  background: var(--bg);
+}
+.process-conclusion-title {
+  font-weight: 700; font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--accent); margin-bottom: 10px;
+}
+.process-conclusion-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.process-conclusion-list li {
+  font-size: 0.9rem; color: var(--ink-light); line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.process-conclusion-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+.process-conclusion-text { font-size: 0.9rem; color: var(--ink-light); line-height: 1.65; margin-top: 8px; }
+
+/* Tool tags */
+.process-tools { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 20px; }
+.process-tools-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+.process-tools-row:last-child { margin-bottom: 0; }
+.tools-label {
+  font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--ink-lighter); white-space: nowrap;
+  padding-top: 3px; min-width: 68px;
+}
+.tools-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-tag {
+  font-size: 0.72rem; font-weight: 500; padding: 3px 10px;
+  background: var(--bg-alt); border: 1px solid var(--border);
+  color: var(--ink-light); white-space: nowrap;
+}
+.tool-tag.accent { background: rgba(200,66,26,0.07); border-color: rgba(200,66,26,0.25); color: var(--accent); }
+
+/* ── SCREENSHOTS ── */
+.screenshots-section { margin-top: 32px; }
+.screenshots-block { margin-bottom: 28px; }
+.screenshots-block-title {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-lighter); margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+}
+.screenshots-grid { display: grid; gap: 8px; }
+.screenshots-grid.cols-1 { grid-template-columns: 1fr; }
+.screenshots-grid.cols-2 { grid-template-columns: repeat(2,1fr); }
+.screenshots-grid.cols-3 { grid-template-columns: repeat(3,1fr); }
+.screenshot-img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: zoom-in;
+  transition: opacity 0.15s;
+}
+.screenshot-img:hover { opacity: 0.92; }
+.screenshot-caption {
+  font-size: 0.7rem; color: var(--ink-lighter); text-align: center;
+  margin-top: 4px; font-family: var(--font-mono);
+}
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+  padding: 20px;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; box-shadow: 0 8px 48px rgba(0,0,0,0.5); }
+.lightbox-close {
+  position: fixed; top: 16px; right: 20px; color: #fff; font-size: 2rem;
+  cursor: pointer; line-height: 1; background: none; border: none; opacity: 0.7;
+}
+.lightbox-close:hover { opacity: 1; }
+
+/* ── CONTACTS ── */
+#contacts { background: var(--ink); color: var(--bg); }
+#contacts .section-label { color: var(--accent-light); }
+#contacts .section-title { color: #fff; margin-bottom: 12px; }
+.contacts-sub { font-size: 1rem; color: rgba(245,243,239,0.5); margin-bottom: 48px; font-weight: 400; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.06); margin-bottom: 32px; }
+.contact-item { background: rgba(255,255,255,0.03); padding: 28px 32px; text-decoration: none; display: block; transition: background 0.2s; }
+a.contact-item:hover { background: rgba(200,66,26,0.12); }
+.contact-label { font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(245,243,239,0.35); margin-bottom: 8px; }
+.contact-value { font-size: 1rem; color: #f5f3ef; font-weight: 500; }
+.tg-block {
+  display: flex; align-items: center; gap: 16px; padding: 24px 32px;
+  background: rgba(255,255,255,0.03); margin-bottom: 36px; text-decoration: none;
+  transition: background 0.2s; border: 1px solid rgba(255,255,255,0.06);
+}
+.tg-block:hover { background: rgba(41,182,246,0.1); }
+.tg-icon { width: 52px; height: 52px; flex-shrink: 0; }
+.tg-text strong { display: block; color: #fff; font-size: 1rem; font-weight: 600; }
+.tg-text span { font-size: 0.82rem; color: rgba(245,243,239,0.42); }
+.contacts-note {
+  font-size: 0.82rem; color: rgba(245,243,239,0.35);
+  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+}
+.contacts-note-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+/* ── FOOTER ── */
+footer {
+  background: #111; padding: 20px 24px; text-align: center;
+  font-family: var(--font-mono); font-size: 0.68rem;
+  color: rgba(245,243,239,0.18); letter-spacing: 0.06em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo-wrap { max-width: 260px; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .contacts-grid { grid-template-columns: 1fr; }
+  .screenshots-grid.cols-3 { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  section { padding: 64px 0; }
+  #about { padding-top: calc(60px + 40px); }
+  .process-case-header { padding: 18px 20px; }
+  .process-body { padding: 0 18px 24px 18px; }
+  .screenshots-grid.cols-2, .screenshots-grid.cols-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .section-title { font-size: 1.65rem; }
+  .about-photo-wrap { max-width: 100%; }
+  .contact-item { padding: 20px; }
+  .tg-block { padding: 18px 20px; }
+  .contacts-note { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#about">Владимир Бычков</a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#process">Разбор кейсов</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <button class="nav-burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#about" onclick="closeMobile()">Обо мне</a>
+    <a href="#cases" onclick="closeMobile()">Кейсы</a>
+    <a href="#process" onclick="closeMobile()">Разбор кейсов</a>
+    <a href="#contacts" onclick="closeMobile()">Контакты</a>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">01 — Обо мне</div>
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <img class="about-photo-real" src="images/photo.jpg" alt="Владимир Бычков">
+      </div>
+      <div class="about-content">
+        <h3>Владимир Бычков —<br>Руководитель отдела маркетинга</h3>
+        <p class="about-text">За 10 лет в маркетинге я прошёл путь от специалиста по контекстной рекламе до руководителя отдела маркетинга.<br>Мой подход — строить системы, а не просто запускать рекламу.</p>
+        <p class="about-text">Имею высшее образование. Являюсь сертифицированным специалистом.</p>
+        <div class="about-actions">
+          <a class="about-link" href="https://nn.hh.ru/resume/99c7beaeff075b58eb0039ed1f584d7662536f" target="_blank" rel="noopener">
+            <!-- HH.ru logo -->
+            <svg width="32" height="20" viewBox="0 0 60 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="60" height="38" rx="6" fill="#D6001C"/>
+              <path d="M8 9h5.5v7.8c1.1-1.7 2.9-2.6 5-2.6 3.8 0 6.2 2.6 6.2 6.8V30H19V21.6c0-2.1-1.1-3.3-2.9-3.3-2 0-3.1 1.4-3.1 3.7V30H8V9z" fill="white"/>
+              <path d="M27 9h5.5v7.8c1.1-1.7 2.9-2.6 5-2.6 3.8 0 6.2 2.6 6.2 6.8V30H38V21.6c0-2.1-1.1-3.3-2.9-3.3-2 0-3.1 1.4-3.1 3.7V30H27V9z" fill="white"/>
+            </svg>
+            Моё резюме
+          </a>
+          <a class="about-link accent" href="https://drive.google.com/drive/folders/1QRSYcFPxlvacD55d6P8WZRCP3TsXZQvL?usp=sharing" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Мои сертификаты
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="section-inner">
+    <div class="section-label">02 — Портфолио</div>
+    <div class="section-title">Кейсы</div>
+    <div class="cases-grid">
+
+      <a class="case-card" href="#case-1">
+        <div class="case-img-placeholder" style="aspect-ratio:16/9; background:#fff; display:block; padding:0;">
+          <img src="images/case1_cover.png" alt="Кейс 1 — ГК Инструмент" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="case-arrow">↗</span>
+        </div>
+        <div class="case-body">
+          <div class="case-num">Кейс №1</div>
+          <div class="case-title">От маркетолога до руководителя отдела, который увеличил выручку в 4 раза</div>
+          <div class="case-meta">
+            <span>B2B / E-commerce</span><span>3 года</span><span>2023–2026</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="case-card" href="#case-2">
+        <div class="case-img-placeholder" style="aspect-ratio:16/9; background:#fff; display:block; padding:0;">
+          <img src="images/case2_cover.png" alt="Кейс 2 — Снижение цены заявки" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="case-arrow">↗</span>
+        </div>
+        <div class="case-body">
+          <div class="case-num">Кейс №2</div>
+          <div class="case-title">Детальная проработка РК помогла снизить цену заявки и ДРР в 2 раза</div>
+          <div class="case-meta">
+            <span>B2C / Авто</span><span>2 года</span><span>2018–2020</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="case-card" href="#case-3">
+        <div class="case-img-placeholder" style="aspect-ratio:16/9; background:#fff; display:block; padding:0;">
+          <img src="images/case3_cover.png" alt="Кейс 3 — Работа с отзывами" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="case-arrow">↗</span>
+        </div>
+        <div class="case-body">
+          <div class="case-num">Кейс №3</div>
+          <div class="case-title">Как работа с отзывами увеличила количество заявок в 4 раза</div>
+          <div class="case-meta">
+            <span>B2C / SERM</span><span>1 год</span><span>2023</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="case-card" href="#case-4">
+        <div class="case-img-placeholder" style="aspect-ratio:16/9; background:#fff; display:block; padding:0;">
+          <img src="images/case4_cover.png" alt="Кейс 4 — Рекламации" style="width:100%;height:100%;object-fit:cover;display:block;">
+          <span class="case-arrow">↗</span>
+        </div>
+        <div class="case-body">
+          <div class="case-num">Кейс №4</div>
+          <div class="case-title">Создал отдел по рекламациям, благодаря которому за 1 год решили 315 жалоб</div>
+          <div class="case-meta">
+            <span>B2B / Процессы</span><span>2 месяца</span><span>2025</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label">03 — Детали</div>
+    <div class="section-title">Разбор кейсов</div>
+    <div class="process-cases">
+
+      <!-- ══ КЕЙС 1 ══ -->
+      <div class="process-case" id="case-1">
+        <div class="process-case-header" onclick="toggleCase(this)">
+          <div class="process-case-header-left">
+            <span class="process-num">01</span>
+            <div class="process-case-title">От маркетолога до руководителя отдела, который увеличил выручку в 4 раза</div>
+          </div>
+          <button class="process-toggle" tabindex="-1">+</button>
+        </div>
+        <div class="process-body">
+          <div class="process-meta">
+            <div class="process-meta-item"><strong>Клиент</strong>ГК Инструмент</div>
+            <div class="process-meta-item"><strong>Ниша</strong>B2B, E-commerce</div>
+            <div class="process-meta-item"><strong>Роль</strong>Руководитель отдела маркетинга</div>
+            <div class="process-meta-item"><strong>Срок</strong>3 года (2023–2026)</div>
+            <div class="process-meta-item"><strong>Бюджет</strong>2 500 000 ₽/мес</div>
+          </div>
+          <p class="process-text"><strong>Ситуация до:</strong> есть интернет-магазин, но нет рекламного и SEO-трафика, никакого продвижения. Почти нет заявок, недостаточно прибыли, нет отдела маркетинга.</p>
+
+          <div class="process-section-title">Задачи</div>
+          <ol class="process-ol">
+            <li>Сформировать отдел маркетинга</li>
+            <li>Увеличить прибыль и клиентскую базу</li>
+            <li>Настроить и увеличить SEO-трафик</li>
+          </ol>
+
+          <div class="process-section-title">Что было сделано</div>
+          <ol class="process-ol">
+            <li>Анализ и стратегия
+              <ul class="process-ul">
+                <li>Провёл аудит текущего состояния, чтобы определить точки роста и приоритеты</li>
+                <li>Сформировал стратегию продвижения на 3 года: запуск рекламы → SEO → масштабирование</li>
+              </ul>
+            </li>
+            <li>Формирование отдела маркетинга
+              <ul class="process-ul">
+                <li>Собрал команду из 10 человек (SEO, контекст, дизайнер, копирайтер, SMM, программисты, специалист по маркетплейсам)</li>
+                <li>Прописал каждому сотруднику годовые задачи и KPI для прозрачности и ответственности</li>
+                <li>Внедрил Битрикс24 и Roistat для управления задачами и сквозной аналитики</li>
+              </ul>
+            </li>
+            <li>Настройка рекламных кампаний
+              <ul class="process-ul">
+                <li>Запустил рекламные кампании в Яндекс.Директе на все категории товаров (более 140)</li>
+                <li>Настроил сквозную аналитику: Roistat + 1С + Битрикс24 — статистика по каждому каналу и ключу</li>
+                <li>Контролировал ДРР на уровне не выше 25%, перераспределяя бюджет между каналами</li>
+              </ul>
+            </li>
+            <li>Запуск SEO-продвижения
+              <ul class="process-ul">
+                <li>Собрали семантику через Key Collector и Serpstat, очистили и кластеризовали ядро без каннибализации</li>
+                <li>Проработали метатеги (Title, Description, H1) для всех страниц — повысили CTR и релевантность</li>
+                <li>Закрыли технические ошибки по GSC и Яндекс.Вебмастеру (битые ссылки, дубли, скорость загрузки)</li>
+                <li>Запустили регулярную публикацию SEO-статей через GoGetlinks</li>
+                <li>Закрыли базовую оптимизацию: robots.txt, sitemap, ЧПУ, зеркала</li>
+              </ul>
+            </li>
+            <li>Подключение дополнительных каналов
+              <ul class="process-ul">
+                <li>Настроил рассылки в Unisender (брошенные корзины, повторные продажи) для повышения LTV</li>
+                <li>Вывели продукцию на маркетплейсы (ВсеИнструменты, Озон, Яндекс.Маркет) — выручка 260 млн ₽</li>
+              </ul>
+            </li>
+            <li>Управление репутацией
+              <ul class="process-ul">
+                <li>Сделал аналитику в Google-таблице с ежемесячным обновлением</li>
+                <li>Настроил публикацию готовых отзывов через Qcomment, написал скрипты ответов</li>
+              </ul>
+            </li>
+            <li>Оптимизация и контроль
+              <ul class="process-ul">
+                <li>Внедрил ежемесячную отчётность по KPI для команды</li>
+                <li>Раз в неделю — разбор задач команды, раз в квартал — страт-сессия</li>
+                <li>Автоматизировал отчётность через Power BI / Roistat: все KPI в одном окне</li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="process-results">
+            <div class="process-results-title">Результат и доказательства</div>
+            <ul class="process-results-list">
+              <li>Прибыль через сайт выросла в 4 раза за первый год</li>
+              <li>Привлечено 701 новый клиент (юридических лиц) через сайт</li>
+              <li>SEO-трафик занял 50% от рекламного к концу 3-го года</li>
+              <li>Рекламные кампании покрывают все 140+ категорий магазина</li>
+              <li>ДРР не превышал 18% от выручки</li>
+              <li>Построен отдел из 10 человек с прозрачными KPI и системой отчётности</li>
+              <li>Рейтинг 5.0 на всех ключевых картах и отзовиках</li>
+            </ul>
+          </div>
+
+          <div class="screenshots-section">
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Таблица — новые клиенты и прибыль</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image18.png" alt="Таблица по новым клиентам и прибыли" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Общая таблица трафика по SEO</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image15.png" alt="SEO трафик" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">I. Новые юр. лица через сайт (отчёты 1С)</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image20.png" alt="1С 2022" onclick="openLightbox(this)"><div class="screenshot-caption">До — 2022 год</div></div>
+                <div><img class="screenshot-img" src="images/image13.png" alt="1С 2023" onclick="openLightbox(this)"><div class="screenshot-caption">2023 год</div></div>
+                <div><img class="screenshot-img" src="images/image28.png" alt="1С 2024" onclick="openLightbox(this)"><div class="screenshot-caption">2024 год</div></div>
+                <div><img class="screenshot-img" src="images/image7.png" alt="1С 2025" onclick="openLightbox(this)"><div class="screenshot-caption">2025 год</div></div>
+              </div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">II. Прибыль — оплаты через сайт (отчёты 1С)</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image33.png" alt="Оплаты 2022" onclick="openLightbox(this)"><div class="screenshot-caption">До — 2022 год</div></div>
+                <div><img class="screenshot-img" src="images/image5.png" alt="Оплаты 2023" onclick="openLightbox(this)"><div class="screenshot-caption">2023 год</div></div>
+                <div><img class="screenshot-img" src="images/image1.png" alt="Оплаты 2024" onclick="openLightbox(this)"><div class="screenshot-caption">2024 год</div></div>
+                <div><img class="screenshot-img" src="images/image21.png" alt="Оплаты 2025" onclick="openLightbox(this)"><div class="screenshot-caption">2025 год</div></div>
+              </div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">III. ДРР — доля рекламных расходов (Roistat, с 2024)</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image6.png" alt="Roistat ДРР (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image10.png" alt="Roistat ДРР (2)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">IV. Трафик — Яндекс.Метрика по годам</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image30.png" alt="Метрика 2022" onclick="openLightbox(this)"><div class="screenshot-caption">До — 2022 год</div></div>
+                <div><img class="screenshot-img" src="images/image32.png" alt="Метрика 2023" onclick="openLightbox(this)"><div class="screenshot-caption">2023 год</div></div>
+                <div><img class="screenshot-img" src="images/image12.png" alt="Метрика 2024" onclick="openLightbox(this)"><div class="screenshot-caption">2024 год</div></div>
+                <div><img class="screenshot-img" src="images/image29.png" alt="Метрика 2025" onclick="openLightbox(this)"><div class="screenshot-caption">2025 год</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-conclusion">
+            <div class="process-conclusion-title">Вывод</div>
+            <p class="process-conclusion-text">Комплексная система маркетинга за 3 года позволила увеличить прибыль в 4 раза при ДРР не выше 18%, привлечь 701 нового клиента и вывести SEO на 50% трафика от рекламного. Ключевой фактор успеха — не отдельные тактики (реклама, SEO, отзывы), а создание управляемой маркетинговой системы: от стратегии и найма до сквозной аналитики (Roistat + 1С + Битрикс24) и ежемесячного контроля KPI. Это позволило масштабировать результат без хаоса.</p>
+          </div>
+
+          <div class="process-tools">
+            <div class="process-tools-row">
+              <span class="tools-label">Каналы</span>
+              <div class="tools-tags">
+                <span class="tool-tag accent">Яндекс.Директ</span>
+                <span class="tool-tag accent">SEO</span>
+                <span class="tool-tag accent">Unisender</span>
+                <span class="tool-tag accent">CRM</span>
+                <span class="tool-tag accent">Маркетплейсы</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Сервисы</span>
+              <div class="tools-tags">
+                <span class="tool-tag">Roistat</span>
+                <span class="tool-tag">Битрикс24</span>
+                <span class="tool-tag">Topvisor</span>
+                <span class="tool-tag">Serpstat</span>
+                <span class="tool-tag">Key Collector</span>
+                <span class="tool-tag">GSC</span>
+                <span class="tool-tag">GoGetlinks</span>
+                <span class="tool-tag">Spywords</span>
+                <span class="tool-tag">Qcomment</span>
+                <span class="tool-tag">Power BI</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Бюджет</span>
+              <div class="tools-tags"><span class="tool-tag">2 500 000 ₽/мес (ФОТ 40% + Реклама 60%)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ КЕЙС 2 ══ -->
+      <div class="process-case" id="case-2">
+        <div class="process-case-header" onclick="toggleCase(this)">
+          <div class="process-case-header-left">
+            <span class="process-num">02</span>
+            <div class="process-case-title">Детальная проработка РК помогла снизить цену заявки и ДРР в 2 раза</div>
+          </div>
+          <button class="process-toggle" tabindex="-1">+</button>
+        </div>
+        <div class="process-body">
+          <div class="process-meta">
+            <div class="process-meta-item"><strong>Клиент</strong>NDA</div>
+            <div class="process-meta-item"><strong>Ниша</strong>B2C, авторемонт (стёкла)</div>
+            <div class="process-meta-item"><strong>Роль</strong>Интернет-маркетолог</div>
+            <div class="process-meta-item"><strong>Срок</strong>2 года (2018–2020)</div>
+            <div class="process-meta-item"><strong>Бюджет</strong>до 1 000 000 ₽/мес</div>
+          </div>
+          <p class="process-text"><strong>Ситуация до:</strong> максимальный ДРР 44% — всё что выше идёт в убыток. Рекламу вёл сторонний подрядчик: заявки были, но дорогие и ДРР выше нужного. Цена заявки — 600 ₽, выше рынка.</p>
+
+          <div class="process-section-title">Задачи</div>
+          <ol class="process-ol">
+            <li>Снизить стоимость заявки до 300 ₽ и выйти на ДРР ниже 44%</li>
+            <li>Сделать ежемесячный прирост продаж на 10% от прошлого года в том же месяце</li>
+          </ol>
+
+          <div class="process-section-title">Что было сделано</div>
+          <ol class="process-ol">
+            <li>Проанализировал текущие кампании подрядчика, чтобы найти точки перерасхода бюджета (неэффективные ключи, ставки, регионы)</li>
+            <li>Разделил кампании по городам присутствия, чтобы не сливать бюджет на регионы без точек</li>
+            <li>Раздробил структуру ключей на отдельные РК под каждую тематику:
+              <ul class="process-ul">
+                <li>ремонт или замена</li>
+                <li>брендовые запросы</li>
+                <li>марки и модели автомобилей</li>
+                <li>бренды автостекол</li>
+                <li>общие фразы</li>
+                <li>самые продаваемые ключи за период</li>
+              </ul>
+            </li>
+            <li>Пересобрал минус-слова по отчётам поисковых запросов за 3 месяца, чтобы отсечь нецелевой трафик</li>
+            <li>Написал и протестировал 5 вариантов заголовков и текстов объявлений, оставив лучшие по CTR и конверсии</li>
+            <li>Снизил ставки на 30% по ключам с высокой ценой заявки, перераспределил бюджет на фразы с конверсией выше среднего</li>
+            <li>Запустил автоматические стратегии с фокусом на «цену конверсии», задав целевые 300 ₽ за заявку</li>
+            <li>Выделил 10% бюджета на ежемесячные тесты новых гипотез (объявления, посадочные страницы без изменения основного сайта)</li>
+            <li>Отключил за 2 года 40% неэффективных объявлений и ключей, перенаправив бюджет на работающие связки</li>
+          </ol>
+
+          <div class="process-results">
+            <div class="process-results-title">Результат и доказательства</div>
+            <ul class="process-results-list">
+              <li>ДРР снизился с 50% до 18%</li>
+              <li>Цена заявки упала с 508 ₽ до 254 ₽ (−50%)</li>
+              <li>При росте расходов на рекламу +33% — чистая прибыль удвоилась</li>
+            </ul>
+          </div>
+
+          <div class="screenshots-section">
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Сводная таблица Excel</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image31.png" alt="Excel таблица" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Roistat — период 2018–2019</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image22.png" alt="Roistat 2018-19 (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image19.png" alt="Roistat 2018-19 (2)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Roistat — период 2019–2020</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image8.png" alt="Roistat 2019-20 (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image26.png" alt="Roistat 2019-20 (2)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-conclusion">
+            <div class="process-conclusion-title">Вывод</div>
+            <p class="process-conclusion-text">Системная детальная проработка рекламных кампаний — структурирование ключей, пересборка минус-слов, тестирование объявлений, перенос бюджета с неэффективных ключей — в связке со сквозной аналитикой Roistat позволила:</p>
+            <ul class="process-conclusion-list">
+              <li>снизить ДРР с 50% до 18%</li>
+              <li>снизить цену заявки с 508 ₽ до 254 ₽</li>
+              <li>при росте расходов на рекламу (+33%) удвоить чистую прибыль</li>
+            </ul>
+          </div>
+
+          <div class="process-tools">
+            <div class="process-tools-row">
+              <span class="tools-label">Каналы</span>
+              <div class="tools-tags">
+                <span class="tool-tag accent">Яндекс.Директ</span>
+                <span class="tool-tag accent">Google Ads</span>
+                <span class="tool-tag accent">ВКонтакте</span>
+                <span class="tool-tag accent">Telegram</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Сервисы</span>
+              <div class="tools-tags"><span class="tool-tag">Roistat</span></div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Бюджет</span>
+              <div class="tools-tags"><span class="tool-tag">до 1 000 000 ₽/мес (90% реклама + 10% тесты)</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ КЕЙС 3 ══ -->
+      <div class="process-case" id="case-3">
+        <div class="process-case-header" onclick="toggleCase(this)">
+          <div class="process-case-header-left">
+            <span class="process-num">03</span>
+            <div class="process-case-title">Как работа с отзывами увеличила количество заявок в 4 раза</div>
+          </div>
+          <button class="process-toggle" tabindex="-1">+</button>
+        </div>
+        <div class="process-body">
+          <div class="process-meta">
+            <div class="process-meta-item"><strong>Клиент</strong>NDA</div>
+            <div class="process-meta-item"><strong>Ниша</strong>B2C, авторемонт</div>
+            <div class="process-meta-item"><strong>Роль</strong>Маркетолог, SERM</div>
+            <div class="process-meta-item"><strong>Срок</strong>1 год, с 2023</div>
+            <div class="process-meta-item"><strong>Бюджет</strong>20 000 ₽/мес</div>
+          </div>
+          <p class="process-text"><strong>Ситуация до:</strong> репутацией никто не занимался. Не было понимания, на каких площадках мы находимся. Не все сервисные центры добавлены на карты. Информация, фото, описания заполнены по-разному. Не было мотивации у клиентов оставлять отзывы.</p>
+
+          <div class="process-section-title">Задача</div>
+          <p class="process-text">Добавить все сервисные центры в трёх городах на карты и довести рейтинг до 5 звёзд.</p>
+
+          <div class="process-section-title">Что было сделано</div>
+          <ol class="process-ol">
+            <li>Провёл анализ поисковых запросов в Яндекс и Google: «название бренда» рус/англ + слово «отзывы»</li>
+            <li>Выписал результаты первых двух страниц в Google-таблицу с присвоением приоритетного номера. Свёл ВПРом — определил, какие площадки приоритетнее</li>
+            <li>Сделал аналитику в Google-таблице: зафиксировал положение на январь 2023, заполнял статистику раз в месяц</li>
+            <li>Настроил связку 1С + Stream Telecom: когда статус заказа менялся на «выполнен» — клиенту уходило СМС со ссылкой на отзыв его конкретного СЦ</li>
+            <li>Настроил публикацию готовых отзывов через сервис Qcomment</li>
+            <li>Написал скрипты для положительных и отрицательных отзывов</li>
+            <li>Сделал UTM-метки на ссылках, ведущих с карт</li>
+            <li>Купил статические номера для настройки коллтрекинга и аналитики источника «карты»</li>
+            <li>Настроил интеграцию UTM и коллтрекинга в Roistat для аналитики заявок и продаж</li>
+          </ol>
+
+          <div class="process-results">
+            <div class="process-results-title">Результат и доказательства</div>
+            <ul class="process-results-list">
+              <li>Количество заявок увеличилось в 4 раза за год</li>
+              <li>Рейтинг 5.0 на всех ключевых картах и отзовиках</li>
+              <li>Карты подтверждены как значимый канал заявок через Roistat</li>
+            </ul>
+          </div>
+
+          <div class="screenshots-section">
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Аналитическая таблица по площадкам</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image23.png" alt="Google таблица — площадки" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Интеграция и коллтрекинг в Roistat</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image16.png" alt="Roistat коллтрекинг" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Результаты — рост заявок и рейтингов</div>
+              <div class="screenshots-grid cols-1">
+                <div><img class="screenshot-img" src="images/image25.png" alt="SERM (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image11.png" alt="SERM (2)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image3.png" alt="SERM (3)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-conclusion">
+            <div class="process-conclusion-title">Вывод</div>
+            <ul class="process-conclusion-list">
+              <li><strong>Рост заявок:</strong> количество заявок увеличилось в 4 раза за год — прямая корреляция между работой с отзывами и спросом</li>
+              <li><strong>Управление репутацией:</strong> рейтинг 5.0 на всех ключевых площадках за счёт системного сбора отзывов (1С + SMS-триггеры) и скриптов ответов</li>
+              <li><strong>Аналитика и прозрачность:</strong> благодаря UTM-меткам, коллтрекингу и Roistat удалось подтвердить, что карты и отзывы — значимый канал заявок, а не просто «хороший тон»</li>
+            </ul>
+          </div>
+
+          <div class="process-tools">
+            <div class="process-tools-row">
+              <span class="tools-label">Каналы</span>
+              <div class="tools-tags">
+                <span class="tool-tag accent">Яндекс.Карты</span>
+                <span class="tool-tag accent">Google.Карты</span>
+                <span class="tool-tag accent">2ГИС</span>
+                <span class="tool-tag accent">VK</span>
+                <span class="tool-tag accent">Otzovik</span>
+                <span class="tool-tag accent">Zoon</span>
+                <span class="tool-tag accent">Yell</span>
+                <span class="tool-tag accent">SPR</span>
+                <span class="tool-tag accent">Irecommend</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Сервисы</span>
+              <div class="tools-tags">
+                <span class="tool-tag">Stream Telecom</span>
+                <span class="tool-tag">Qcomment</span>
+                <span class="tool-tag">Carrotquest</span>
+                <span class="tool-tag">Roistat</span>
+                <span class="tool-tag">Яндекс.Метрика</span>
+                <span class="tool-tag">1С (API)</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Бюджет</span>
+              <div class="tools-tags"><span class="tool-tag">20 000 ₽/мес</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ КЕЙС 4 ══ -->
+      <div class="process-case" id="case-4">
+        <div class="process-case-header" onclick="toggleCase(this)">
+          <div class="process-case-header-left">
+            <span class="process-num">04</span>
+            <div class="process-case-title">Создал отдел по рекламациям, благодаря которому за 1 год решили 315 жалоб</div>
+          </div>
+          <button class="process-toggle" tabindex="-1">+</button>
+        </div>
+        <div class="process-body">
+          <div class="process-meta">
+            <div class="process-meta-item"><strong>Клиент</strong>ГК Инструмент</div>
+            <div class="process-meta-item"><strong>Ниша</strong>B2B, E-commerce</div>
+            <div class="process-meta-item"><strong>Роль</strong>Руководитель отдела маркетинга</div>
+            <div class="process-meta-item"><strong>Срок</strong>2 месяца</div>
+            <div class="process-meta-item"><strong>Бюджет</strong>100 000 ₽</div>
+          </div>
+          <p class="process-text"><strong>Ситуация до:</strong> казалось, что за 20 лет не было жалоб. Было непонятно: сколько жалоб, кто их пишет, что с ними делать, где хранятся и кто ответственный. Жалобы решались кулуарно в личных переписках.</p>
+
+          <div class="process-section-title">Задача</div>
+          <p class="process-text">Создать отдел по рекламациям с понятным функционалом для сотрудников и клиентов. Настроить аналитику.</p>
+
+          <div class="process-section-title">Что было сделано</div>
+          <ol class="process-ol">
+            <li>Собрал информацию у сотрудников: откуда поступают рекламации, как их решают, есть ли скрипты-стандарты, поощрение/наказание за решение или нерешение жалоб</li>
+            <li>Прописал действующий бизнес-процесс и составил план целевого результата</li>
+            <li>Решил сделать интеграцию с Битрикс24: все сотрудники уже в нём, он полностью отвечал задачам</li>
+            <li>Настроил автоматизацию в Битрикс24 — цель: убрать максимум «ручного труда»:
+              <ul class="process-ul">
+                <li>Сделали воронку со статусами — у каждого статуса своя автоматизация</li>
+                <li>Созданы шаблоны с Ответственными и Исполнителями на каждый бренд компании</li>
+                <li>Созданы 2 отдельных email-почты: при входящем письме автоматически создаётся «Задача» в Битрикс24</li>
+                <li>Из контекста жалобы система определяет бренд и автоматически подставляет нужных ответственных</li>
+                <li>Создал чат-бота в Telegram с интеграцией в Битрикс24</li>
+              </ul>
+            </li>
+            <li>Написал скрипты шаблонных ответов для менеджеров и чат-бота, добавил в Битрикс24 для быстрого доступа</li>
+            <li>Разработал систему поощрения для сотрудников, чтобы убрать страх у тех, кто отвечает за рекламацию</li>
+            <li>С отделом дизайна сделал флаеры — на складе начали вкладывать в каждый заказ</li>
+            <li>Провёл обучение сотрудников: показал новый функционал и рассказал, что делать при поступлении жалобы</li>
+            <li>Сделал аналитику по рекламациям: бренды, скорость взятия в работу (в минутах), скорость решения (в днях)</li>
+            <li>Создал механизм постаналитики — ежеквартальные встречи с руководителями брендов, чтобы проблема не повторялась</li>
+          </ol>
+
+          <div class="process-results">
+            <div class="process-results-title">Результат и доказательства</div>
+            <ul class="process-results-list">
+              <li>Выстроена воронка с единоначалием и прозрачной аналитикой</li>
+              <li>Менеджеры стали общаться в формате просьбы и предложения, а не требования</li>
+              <li>90% сотрудников адаптировались к работе с жалобами по новым правилам</li>
+              <li>За 2025 год: от 0 жалоб до 339 зафиксированных, 315 решено</li>
+            </ul>
+          </div>
+
+          <div class="screenshots-section">
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Воронка статусов по рекламациям (Битрикс24)</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image24.png" alt="Воронка рекламаций" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Аналитика Битрикс24 BI — 3 блока в одном окне</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image27.png" alt="Б24 BI дашборд" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Скорость решения жалобы (дни)</div>
+              <div class="screenshots-grid cols-1"><div><img class="screenshot-img" src="images/image9.png" alt="Скорость решения" onclick="openLightbox(this)"></div></div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Количество рекламаций по брендам</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image17.png" alt="По брендам (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image14.png" alt="По брендам (2)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+            <div class="screenshots-block">
+              <div class="screenshots-block-title">Флаер для клиентов</div>
+              <div class="screenshots-grid cols-2">
+                <div><img class="screenshot-img" src="images/image4.png" alt="Флаер (1)" onclick="openLightbox(this)"></div>
+                <div><img class="screenshot-img" src="images/image2.png" alt="Флаер (2)" onclick="openLightbox(this)"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="process-conclusion">
+            <div class="process-conclusion-title">Вывод</div>
+            <p class="process-conclusion-text">Из полного отсутствия системы и «нуля жалоб» компания вышла на управляемый процесс, который за год решил 315 проблем клиентов и повысил качество работы с претензиями. Кейс наглядно показывает: отсутствие жалоб ≠ их отсутствие — это отсутствие системы.</p>
+          </div>
+
+          <div class="process-tools">
+            <div class="process-tools-row">
+              <span class="tools-label">Каналы</span>
+              <div class="tools-tags">
+                <span class="tool-tag accent">Email</span>
+                <span class="tool-tag accent">Telegram</span>
+                <span class="tool-tag accent">Флаеры</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Сервисы</span>
+              <div class="tools-tags">
+                <span class="tool-tag">Битрикс24</span>
+                <span class="tool-tag">Битрикс24 BI</span>
+              </div>
+            </div>
+            <div class="process-tools-row">
+              <span class="tools-label">Бюджет</span>
+              <div class="tools-tags">
+                <span class="tool-tag">70 000 ₽ — программист Б24</span>
+                <span class="tool-tag">20 000 ₽ — флаеры</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="section-inner">
+    <div class="section-label">04 — Связаться</div>
+    <div class="section-title">Контакты</div>
+    <p class="contacts-sub">Лучше писать на почту или в мессенджеры</p>
+
+    <div class="contacts-grid">
+      <div class="contact-item" id="phoneBlock" style="cursor:pointer">
+        <div class="contact-label">Телефон</div>
+        <div class="contact-value" id="phoneVal">Загрузка…</div>
+      </div>
+      <div class="contact-item" id="emailBlock" style="cursor:pointer">
+        <div class="contact-label">Email</div>
+        <div class="contact-value" id="emailVal">Загрузка…</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Проживание</div>
+        <div class="contact-value">Россия, г. Нижний Новгород</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Специализация</div>
+        <div class="contact-value">Интернет-маркетинг, B2B/B2C</div>
+      </div>
+    </div>
+
+    <a class="tg-block" href="https://t.me/bychkov096" target="_blank" rel="noopener">
+      <svg class="tg-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="26" fill="#29B6F6"/>
+        <path d="M38.6 14.8L33.3 38.2c-.4 1.8-1.5 2.2-3 1.4l-8.3-6.1-4 3.8c-.4.4-.8.6-1.7.6l.6-8.6L33.2 17c.8-.7-.2-1-1.2-.3L13.4 28.1l-8.2-2.6c-1.8-.5-1.8-1.8.4-2.7l31.8-12.3c1.5-.5 2.8.4 2.2 2.3z" fill="white"/>
+      </svg>
+      <div class="tg-text">
+        <strong>Telegram</strong>
+        <span>@bychkov096 — напишите напрямую</span>
+      </div>
+    </a>
+
+    <div class="contacts-note">
+      <div class="contacts-note-dot"></div>
+      <span>Владимир Бычков &nbsp;·&nbsp; Интернет-маркетинг</span>
+      <div class="contacts-note-dot"></div>
+      <span>г. Нижний Новгород, Россия</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Владимир Бычков &nbsp;·&nbsp; Интернет-маркетинг
+</footer>
+
+<script>
+// Mobile nav
+const burger = document.getElementById('burger');
+const navMobile = document.getElementById('navMobile');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+function closeMobile() {
+  burger.classList.remove('open');
+  navMobile.classList.remove('open');
+}
+
+// Accordion
+function toggleCase(header) {
+  const body = header.nextElementSibling;
+  const btn  = header.querySelector('.process-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+' : '−';
+}
+
+// Anti-spam contacts
+window.addEventListener('DOMContentLoaded', () => {
+  const p = ['+7','(910)','893','88','50'];
+  document.getElementById('phoneVal').textContent = p.join('\u00A0');
+  document.getElementById('phoneBlock').addEventListener('click', () => {
+    window.location.href = 'tel:' + p.join('').replace(/[^+\d]/g,'');
+  });
+  const u = ['vlad','.','bychkov096'];
+  const d = ['gmail','.','com'];
+  const email = u.join('') + '@' + d.join('');
+  document.getElementById('emailVal').textContent = email;
+  document.getElementById('emailBlock').addEventListener('click', () => {
+    window.location.href = 'mailto:' + email;
+  });
+});
+
+// Smooth scroll to case + open accordion
+document.querySelectorAll('a[href^="#case-"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    const body = target.querySelector('.process-body');
+    const btn  = target.querySelector('.process-toggle');
+    if (body && !body.classList.contains('open')) {
+      body.classList.add('open');
+      btn.classList.add('open');
+      btn.textContent = '−';
+    }
+    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  });
+});
+
+// Lightbox
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
